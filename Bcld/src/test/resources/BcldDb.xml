@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database SYSTEM "http://db.apache.org/torque/dtd/database.dtd">
+<database name="">
+
+    <table name="t_user" description="用户表">
+        <column name="id" type="VARCHAR" size="32" required="true" primaryKey="true" description="主键" />
+        <column name="username" type="VARCHAR" size="32" description="用户名" />
+        <unique>
+            <unique-column name="orderid" />
+        </unique>
+    </table>
+    
+       
+</database>

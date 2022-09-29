@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="Jdbc" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="" connectionURL="" userId="" password="" />
+
+        <javaModelGenerator targetPackage="com.bcld.domain" targetProject="src/test/java" />
+
+        <sqlMapGenerator targetPackage="com.bcld.persistence" targetProject="src/test/resources" />
+
+        <javaClientGenerator targetPackage="com.bcld.persistence" type="XMLMAPPER" targetProject="src/test/java" />
+
+        <table tableName="tb_user" domainObjectName="User">
+        <columnRenamingRule searchString="^t_" replaceString=""/>
+        </table>
+    </context>
+
+</generatorConfiguration>

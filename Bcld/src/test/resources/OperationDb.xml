@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database SYSTEM "http://db.apache.org/torque/dtd/database.dtd">
+<database name="bdw">
+
+    <table name="t_test" description="test表">
+        <column name="id" type="VARCHAR" size="32" required="true" primaryKey="true" description="主键" />
+        <column name="name" type="VARCHAR" size="32" description="名称" />
+    </table>
+
+</database>

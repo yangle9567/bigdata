@@ -1,0 +1,147 @@
+<!--   Copyright w3school.com.cn  -->
+<!--  W3School.com.cn bookstore example  -->
+<tongbus>
+    <!-- 同步类型分为三种类型单表同步叫single,多张表同步到一张表叫join -->
+    <tongbu inputkafkatopic="youhui" outputhbasetable="youhui" type="join">
+        <inputdbtb name="dbzdm_youhui.youhui">
+            <!-- 输入列类型为所有列all 选择一些列include  排除一些列exclude 三种类型-->
+            <inputtbcolus type="include">
+                <!-- outputname 如果为空则表示输入列名和输出列名为一样-->
+                <inputcolu inputname="id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="editor_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="clean_link"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="pubdate"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="choiceness_date"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="uhomedate"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_top"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="yh_status"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="yh_type"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="article_type"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="channel"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="district"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="source_from"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="comment_count"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="collection_count"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="praise"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sum_collect_comment"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="worthy"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="unworthy"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="mall"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="mall_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="brand"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="brand_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="digital_price"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_essence_for_editor"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="mobile_exclusive"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="spu_link"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_review"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="faxian_show"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="strategy_pub"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="b2c_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="editor_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="clean_link"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="pubdate"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="choiceness_date"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="uhomedate"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_top"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="yh_status"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="yh_type"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="article_type"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="channel"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="district"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="source_from"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="comment_count"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="collection_count"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="praise"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sum_collect_comment"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="worthy"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="unworthy"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="mall"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="mall_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="brand"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="brand_id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="digital_price"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_essence_for_editor"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="mobile_exclusive"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="spu_link"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_review"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="faxian_show"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="strategy_pub"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="b2c_id" outputname="" actionclass="" actionargs=""></inputcolu>
+            </inputtbcolus>
+
+        </inputdbtb>
+        <inputdbtb name="dbzdm_youhui.youhui_extend">
+            <!-- 输入列类型为所有列all 选择一些列include  排除一些列exclude 三种类型-->
+            <inputtbcolus type="include">
+                <inputcolu inputname="id"	 outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="title" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="referrals" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sync_home_time" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sync_home" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="createdate" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="updatetime" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="guonei_id_for_fx" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="haitao_id_for_fx" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="title_prefix" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="subtitle" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="phrase_desc" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="content" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="direct_link" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="direct_link_name" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="direct_link_list" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sales_area" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="title_mode" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="app_push" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="last_editor_id" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sync_home_id" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="source_from_id" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="source_from_channel" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="sina_id" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="associate_brand" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="associate_mall" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_anonymous" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="push_type" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="stock_status" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="comment_switch" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="is_home_top" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="edit_page_type" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="starttime" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="endtime" outputname="" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="focus_pic_url" outputname="" actionclass="" actionargs=""></inputcolu>
+            </inputtbcolus>
+        </inputdbtb>
+        <inputdbtb name="dbzdm_youhui.youhui_user_rel">
+            <!-- 输入列类型为所有列all 选择一些列include  排除一些列exclude 三种类型-->
+            <inputtbcolus type="include">
+                <inputcolu inputname="article_id" outputname="id" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="uid" outputname="bl_user_id" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="type" outputname="bl_user_type" actionclass="" actionargs=""></inputcolu>
+            </inputtbcolus>
+        </inputdbtb>
+        <inputdbtb name="dbzdm_youhui.youhui_category">
+            <!-- 输入列类型为所有列all 选择一些列include  排除一些列exclude 三种类型-->
+            <inputtbcolus type="include">
+                <inputcolu inputname="youhui_id" outputname="id" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="top_category_id" outputname="level1" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="second_category_id" outputname="level2" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="third_category_id" outputname="level3" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="fourth_category_id" outputname="level4" actionclass="" actionargs=""></inputcolu>
+            </inputtbcolus>
+        </inputdbtb>
+        <inputdbtb name="dbzdm_baoliao.baoliao_associate">
+            <!-- 输入列类型为所有列all 选择一些列include  排除一些列exclude 三种类型-->
+            <inputtbcolus type="include">
+                <inputcolu inputname="article_id" outputname="id" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="bl_id" outputname="bl_id" actionclass="" actionargs=""></inputcolu>
+            </inputtbcolus>
+        </inputdbtb>
+        <inputdbtb name="dbzdm_youhui.youhui_tag_type_item">
+            <!-- 输入列类型为所有列all 选择一些列include  排除一些列exclude 三种类型-->
+            <inputtbcolus type="include">
+                <inputcolu inputname="article_id" outputname="id" actionclass="" actionargs=""></inputcolu>
+                <inputcolu inputname="tag_id" outputname="tag_id" actionclass="" actionargs=""></inputcolu>
+            </inputtbcolus>
+        </inputdbtb>
+    </tongbu>
+</tongbus>

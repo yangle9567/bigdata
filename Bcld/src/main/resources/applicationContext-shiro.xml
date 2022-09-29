@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd" default-lazy-init="false">
+
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg type="java.util.Properties">
+                    <props>
+                        <prop key="kaptcha.image.width">150</prop>
+                        <prop key="kaptcha.image.height">33</prop>
+                        <prop key="kaptcha.textproducer.font.size">26</prop>
+                        <prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.ShadowGimpy</prop>
+                        <prop key="kaptcha.border">no</prop>
+                        <prop key="kaptcha.textproducer.char.space">9</prop>
+                        <prop key="kaptcha.textproducer.char.length">4</prop>
+                        <!-- <prop key="kaptcha.textproducer.char.string">0123456789abcdefghijklmnopqrstuvwxyz</prop> -->
+                        <!-- <prop key="kaptcha.textproducer.char.string">1</prop> -->
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" /><!--securityManager  这个是属性是必须的 -->
+        <property name="loginUrl" value="/bdw/login" /><!-- loginUrl:没有登录的用户请求需要登录的页面时自动跳转到登录页面，不是必须的属性，不输入地址的话会自动寻找项目web项目的根目录下的“/login。jsp”页面 -->
+        <property name="successUrl" value="/portlet/user_view" />
+        <property name="unauthorizedUrl" value="/bdw/login" />
+        <property name="filters">
+            <util:map>
+                <entry key="authc" value-ref="formAuthenticationFilter" />
+                <!-- <entry key="logout" value-ref="defaultLogoutFilter" /> -->
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+        	<!-- 
+        	anon:例子/admins/**=anon 没有参数，表示可以匿名使用
+        	authc:例如/admins/user/**=authc表示需要认证(登录)才能使用，没有参数
+        	roles：例子/admins/user/**=roles[admin],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，
+        	当有多个参数时，例如admins/user/**=roles["admin,guest"],每个参数通过才算通过，相当于hasAllRoles()方法
+        	免权限没有权限访问免权限访问
+        	 -->
+            <value>
+                /logout = logout
+                /static/** = anon
+                /service/** = anon
+                /message/** = anon
+                /bdw/**=anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="authorizingRealm" />
+        <!-- 
+        <property name="sessionMode" value="native" />
+         -->
+    </bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+    <bean id="authorizingRealm" class="com.bcld.service.impl.AuthorizingRealmImpl" />
+
+    <bean id="formAuthenticationFilter" class="com.bcld.domain.shiro.CaptchaFormAuthenticationFilter" />
+
+    <!-- <bean id="defaultLogoutFilter" class="com.bcld.domain.shiro.DefaultLogoutFilter" /> -->
+
+</beans>

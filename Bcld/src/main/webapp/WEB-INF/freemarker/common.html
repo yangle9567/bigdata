@@ -1,0 +1,307 @@
+<#assign shiro=JspTaglibs["http://shiro.apache.org/tags"]>
+
+<#macro header>
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><#nested></title>
+<link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="${ctx}/static/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen">
+<link href="${ctx}/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="${ctx}/static/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" media="screen">
+<link href="${ctx}/static/custom/css/custom.css" rel="stylesheet" type="text/css" media="screen">
+<!--[if lt IE 9]>
+  <script src="${ctx}/static/assets/js/html5shiv.js"></script>
+  <script src="${ctx}/static/assets/js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+    <a href="#content" class="sr-only">Skip to content</a>
+</#macro>
+
+<#macro footer>
+    <script type="text/javascript" src="${ctx}/static/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="${ctx}/static/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/jquery/jquery.md5.js"></script>
+    <script type="text/javascript" src="${ctx}/static/custom/js/custom.js"></script>
+    <script type="text/javascript" src="${ctx}/static/echarts/echarts-plain.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /* 树操作 */
+        // $('.tree li').hide();
+        // $('.tree li:first').show();
+        $('.tree li').has("ul").find(">img").attr("src","${ctx}/static/custom/icons/folderopen.gif");
+        $('.tree li').has("ul").find(">img").on('click', function(e) {
+            if ($(this).attr("src") == "${ctx}/static/custom/icons/folder.gif") {
+                $(this).attr("src", "${ctx}/static/custom/icons/folderopen.gif");
+            } else {
+                $(this).attr("src", "${ctx}/static/custom/icons/folder.gif");
+            }
+            var children = $(this).parent().find('> ul > li');
+            if (children.is(":visible")) {
+                children.hide('fast');
+            } else {
+                children.show('fast');
+            }
+            e.stopPropagation();
+        });
+        <#nested>
+        the_url = location.href.substring(location.href.indexOf("${ctx}"));        
+        the_urls = the_url.split("_");  
+        local_url = the_url.replace(the_urls[the_urls.length - 1], "");   
+        $(".side-menu").children(".list-group").children("div").children("div").children("a[href^='"+local_url+"']").addClass("active");
+        $(".side-menu").children(".list-group").children("div").children("div").children("a[href^='"+local_url+"']").parent().parent().removeClass("hide");
+        $(".side-menu").children(".list-group").children("div").children("div").children("a[href^='"+local_url+"']").parent().parent().prev().addClass("group-active");
+    });
+    </script>
+</body>
+</html>
+</#macro>
+
+<#macro top>
+<div id="wrapper">
+<header id="header" class="navbar navbar-default navbar-static-top bg-shadow bg-border-top bg-border-bottom" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">            
+                <div class="navbar-header">               
+                    <button data-target=".side-menu" data-toggle="collapse" type="button" class="navbar-toggle"> <span class="sr-only">菜单</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand" href="${ctx}/portlet/user_view"></a> 
+                </div>
+                <div class="navbar-header">
+                	<a href="${ctx}/portlet/welcome_view"><img style="padding-top:8px;" height="40px;" width="30px;" alt="" src="${ctx}/static/custom/images/3.png"/></a>
+                </div>
+            </div>      
+            <div class="col-sm-8">
+                <div class="btn-group navbar-right">
+                   <button type="button" class="btn btn-default navbar-btn dropdown-toggle btn-xs btn-primary" data-toggle="dropdown"><i class="fa fa-user"></i> <@shiro.principal property="username" /> <i class="fa fa-caret-down"></i></button>
+                    <ul class="dropdown-menu">
+                        <li class="text-center"><a href="${ctx}/rbac/user_password"><i class="fa fa-keyboard-o fa-fw pull-left"></i> 修改密码</a></li>
+                        <li class="divider"></li>
+                        <li class="text-center"><a href="${ctx}/logout"><i class="fa fa-power-off fa-fw pull-left"></i> 注 销</a></li>                      
+                        <li class="text-center"><p class="navbar-text pull-left"><i class="fa fa-outdent hidden-xs mouse-on"><span style="color:black;padding-left:15px;">隐藏菜单</span></i></p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</#macro>
+
+<#macro bottom>
+</div>
+<footer id="footer" class="bg-shadow bg-border-top bg-border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="copy">CopyRight &copy; 2015 | <a href="http://www.unisguard.com">博创联动科技公司</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+</#macro>
+
+<#macro main>
+<div id="content" class="container">
+    <div class="row">
+        <div id="side" class="col-sm-2 col-xs-12">
+            <div class="collapse navbar-collapse side-menu">
+                <div class="list-group">
+                     <@shiro.hasAnyPermission name="user_view_manage,asset_view_manage">
+                    <a class="list-group-item bg-shadow bg-border-top bg-border-bottom"><i class="fa fa-desktop fa-fw"></i> 全局概览</a>
+                    <div class="list-group-item hide">
+                        <div class="list-group">
+                            <@shiro.hasPermission name="user_view_manage">
+                            <a href="${ctx}/portlet/user_view" class="list-group-item text-center">源码审计概览</a>
+                            </@shiro.hasPermission>
+                        </div>
+                    </div>
+                    </@shiro.hasAnyPermission>                                   
+                    <@shiro.hasAnyPermission name="department_manage,businessSystem_manage,securityDomain_manage,tamper_asset_manage,asset_manage,log_analysis_asset_manage,log_analysis_file_manage">
+                    <a class="list-group-item bg-shadow bg-border-top bg-border-bottom"><i class="fa fa-briefcase fa-fw"></i> 资产管理</a>
+                    <div class="list-group-item hide">
+                        <div class="list-group">
+                            <@shiro.hasPermission name="asset_manage">
+                            <a href="${ctx}/dictionary/department_list" class="list-group-item text-center">资产管理</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="tamper_asset_manage">
+                            <a href="${ctx}/tamper_asset/tamper_asset_list" class="list-group-item text-center">篡改监控资产管理</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="log_analysis_asset_manage">
+                            <a href="${ctx}/asset/log_analysis_asset_list" class="list-group-item text-center">资产管理</a>
+                         	</@shiro.hasPermission>
+                         	<@shiro.hasPermission name="log_analysis_file_manage">
+                           	<a href="${ctx}/file_list/file_upload" class="list-group-item text-center">文件上传</a> 
+                         	</@shiro.hasPermission>                         	
+                        </div>
+                    </div>
+                    </@shiro.hasAnyPermission>
+                    <@shiro.hasAnyPermission name="right_manage,role_manage,user_manage">
+                    <a class="list-group-item bg-shadow bg-border-top bg-border-bottom"><i class="fa fa-user fa-fw"></i> 账户管理</a>
+                    <div class="list-group-item hide">
+                        <div class="list-group">
+                            <@shiro.hasPermission name="user_manage">
+                            <a href="${ctx}/rbac/user_list" class="list-group-item text-center">用户管理</a>
+                            </@shiro.hasPermission>                            
+                            <@shiro.hasPermission name="role_manage">
+                            <a href="${ctx}/rbac/role_list" class="list-group-item text-center">角色管理</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="right_manage">
+                            <a href="${ctx}/rbac/right_list" class="list-group-item text-center">权限管理</a>
+                            </@shiro.hasPermission>
+                        </div>
+                    </div>
+                    </@shiro.hasAnyPermission> 
+                    <@shiro.hasAnyPermission name="shoujiyinhang_scene,shoujiyinhang_sceneAndSendstr,shoujiyinhang_sendstr">
+                    <a class="list-group-item bg-shadow bg-border-top bg-border-bottom"><i class="fa fa-cog fa-fw"></i>上传参数与菜单场景</a>
+                    <div class="list-group-item hide">
+                        <div class="list-group">
+                            <@shiro.hasPermission name="shoujiyinhang_scene">
+                            <a href="${ctx}/cmbc/scene_list" class="list-group-item text-center">手机银行场景梳理</a>
+                            </@shiro.hasPermission>
+                           <@shiro.hasPermission name="shoujiyinhang_sceneAndSendstr">
+                            <a href="${ctx}/cmbc/sendstr_scene" class="list-group-item text-center">手机银行sendstr和场景</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="shoujiyinhang_sendstr">
+                            <a href="${ctx}/cmbc/update_edit" class="list-group-item text-center">手机银行上传参数sendstr</a>
+                            </@shiro.hasPermission>
+                        </div>
+                    </div>
+                    </@shiro.hasAnyPermission>
+                    <@shiro.hasAnyPermission name="shoujiyinhang_trade,gerenwangyin_trade,zhixiaoyinhang_trade">
+                    <a class="list-group-item bg-shadow bg-border-top bg-border-bottom"><i class="fa fa-cog fa-fw"></i>交易安全性检查</a>
+                    <div class="list-group-item hide">
+                        <div class="list-group">
+                             <@shiro.hasPermission name="shoujiyinhang_trade">
+                            <a href="${ctx}/cmbc2/shoujiyinhang_trade" class="list-group-item text-center">手机银行交易安全性检查</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="gerenwangyin_trade">
+                            <a href="${ctx}/cmbc2/gerenwangyin_trade" class="list-group-item text-center">个人网银交易安全性检查</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="zhixiaoyinhang_trade">
+                            <a href="${ctx}/cmbc2/zhixiaoyinhang_trade" class="list-group-item text-center">直销银行交易安全性检查</a>
+                            </@shiro.hasPermission>
+                        </div>
+                    </div>
+                    </@shiro.hasAnyPermission>
+                    <@shiro.hasAnyPermission name="shoujiyinhang_ruleCheck,gerenwangyin_ruleCheck,zhixiaoyinhang_ruleCheck">
+                    <a class="list-group-item bg-shadow bg-border-top bg-border-bottom"><i class="fa fa-cog fa-fw"></i>自定义XPath规则检测</a>
+                    <div class="list-group-item hide">
+                        <div class="list-group">
+                            <@shiro.hasPermission name="shoujiyinhang_ruleCheck">
+                            <a href="${ctx}/cmbc/shoujiyinhang_ruleCheck" class="list-group-item text-center">手机银行自定义规则检测</a>
+                            </@shiro.hasPermission>
+                            <@shiro.hasPermission name="gerenwangyin_ruleCheck">
+                            <a href="${ctx}/cmbc/gerenwangyin_ruleCheck" class="list-group-item text-center">个人网银自定义规则检测</a>
+                            </@shiro.hasPermission>
+                             <@shiro.hasPermission name="zhixiaoyinhang_ruleCheck">
+                            <a href="${ctx}/cmbc/zhixiaoyinhang_ruleCheck" class="list-group-item text-center">直销银行自定义规则检测</a>
+                            </@shiro.hasPermission>
+                        </div>
+                    </div>
+                    </@shiro.hasAnyPermission>
+                </div>
+            </div>
+        </div>
+        <#nested>
+    </div>
+</div>
+</#macro>
+
+<#macro pagination>
+    $("#pagination_first").click(function() {
+        $("#pageNumber").val("1");
+        $("#search_form").submit();
+    });
+    $("#pagination_prev").click(function() {
+        pageNumber = parseInt($("#pageNumber").val()) - 1;
+        if (pageNumber <= 0) {
+            pageNumber = 1;
+        }
+        $("#pageNumber").val(pageNumber);
+        $("#search_form").submit();
+    });
+    $("#pagination_next").click(function() {
+        pageNumber = parseInt($("#pageNumber").val()) + 1;
+        $("#pageNumber").val(pageNumber);
+        $("#search_form").submit();
+    });
+    $("#pagination_last").click(function() {
+        $("#pageNumber").val("${pageCount!}");
+        $("#search_form").submit();
+    });
+    $("#pagination_jump").click(function() {
+        $("#pageNumber").val($("#pagination_value").val());
+        $("#search_form").submit();
+    });
+</#macro>
+
+<#macro confirm_modal id>
+<div class="modal fade" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}_modal_title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button class="btn btn-danger" id="${id}_title">提示</button>
+            </div>
+            <div id="${id}_content" class="modal-body text-center">内容</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                <button id="${id}_ok_btn" type="button" class="btn btn-sm btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</#macro>
+
+<#macro policy_modal id>
+<div class="modal fade" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}_modal_title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button class="btn btn-danger" id="${id}_title">提示</button>
+            </div>
+            <div id="${id}_content" class="modal-body text-center">内容</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                <button id="${id}_ok_btn" type="button" class="btn btn-sm btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</#macro>
+
+<#macro alert_modal id>
+<div class="modal fade" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}_modal_title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button class="btn btn-danger" id="${id}_title">提示</button>
+            </div>
+            <div id="${id}_content" class="modal-body text-center">内容</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</#macro>
+
+<#macro tree treeNode>
+    <li><img src="${ctx}/static/custom/icons/page.gif" /><span> <span class="nodename" parent_id="${treeNode.parent.id!'0'}" parent_name="${treeNode.parent.name!}" node_id="${treeNode.id!}" description="${treeNode.description!}">${treeNode.name!}</span></span>
+<#if treeNode.children?size != 0>
+        <ul>
+<#list treeNode.children as child>
+<@tree treeNode=child />
+</#list>
+        </ul>
+</#if>
+    </li>
+</#macro>

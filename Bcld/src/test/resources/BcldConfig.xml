@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="Jdbc" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="" connectionURL="" userId="" password="" />
+
+        <javaModelGenerator targetPackage="com.bcld.domain" targetProject="src/test/java" />
+
+        <sqlMapGenerator targetPackage="com.bcld.persistence" targetProject="src/test/resources" />
+
+        <javaClientGenerator targetPackage="com.bcld.persistence" type="XMLMAPPER" targetProject="src/test/java" />
+
+        <table tableName="t_user" domainObjectName="User">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_right" domainObjectName="Right">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_right_group" domainObjectName="RightGroup" />
+
+        <table tableName="t_role" domainObjectName="Role" />
+
+        <table tableName="t_role_right" domainObjectName="RoleRight">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_user_role" domainObjectName="UserRole">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_running_log" domainObjectName="RunningLog" />
+
+        <table tableName="t_running_alert" domainObjectName="RunningAlert" />
+
+        <table tableName="t_department" domainObjectName="Department" />
+
+        <table tableName="t_business_system" domainObjectName="BusinessSystem" />
+
+        <table tableName="t_security_domain" domainObjectName="SecurityDomain" />
+
+        <table tableName="t_asset" domainObjectName="Asset">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_contacts" domainObjectName="Contacts" />
+
+        <table tableName="t_except_url" domainObjectName="ExceptUrl" />
+
+        <table tableName="t_except_parameter" domainObjectName="ExceptParameter" />
+
+        <table tableName="t_custom_field" domainObjectName="CustomField" />
+
+        <table tableName="t_rule" domainObjectName="Rule">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+            <columnOverride column="plan" javaType="String" jdbcType="VARCHAR" />
+            <columnOverride column="script" javaType="String" jdbcType="VARCHAR" />
+            <columnOverride column="description" javaType="String" jdbcType="VARCHAR" />
+        </table>
+
+        <table tableName="t_rule_category" domainObjectName="RuleCategory" />
+
+        <table tableName="t_rule_category_rule" domainObjectName="RuleCategoryRule">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_rule_group" domainObjectName="RuleGroup" />
+
+        <table tableName="t_policy" domainObjectName="Policy" />
+
+        <table tableName="t_policy_rule" domainObjectName="PolicyRule">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_keyword" domainObjectName="Keyword" />
+
+        <table tableName="t_engine" domainObjectName="Engine" />
+
+        <table tableName="t_registration" domainObjectName="Registration" />
+
+        <table tableName="t_update" domainObjectName="Update" />
+
+        <table tableName="t_schedule" domainObjectName="Schedule">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_task" domainObjectName="Task">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_job" domainObjectName="Job">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_schedule_engine" domainObjectName="ScheduleEngine">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_schedule_except_url" domainObjectName="ScheduleExceptUrl">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_schedule_except_parameter" domainObjectName="ScheduleExceptParameter">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_schedule_custom_field" domainObjectName="ScheduleCustomField">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_vulnerability_result" domainObjectName="VulnerabilityResult">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_vulnerability_result_detail" domainObjectName="VulnerabilityResultDetail">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+            <columnOverride column="t_rule_plan" javaType="String" jdbcType="VARCHAR" />
+            <columnOverride column="t_rule_description" javaType="String" jdbcType="VARCHAR" />
+            <columnOverride column="t_test_case" javaType="String" jdbcType="VARCHAR" />
+        </table>
+
+        <table tableName="t_result_statistic" domainObjectName="ResultStatistic">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_job_statistic" domainObjectName="JobStatistic">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_user_department_range" domainObjectName="UserDepartmentRange">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_user_business_system_range" domainObjectName="UserBusinessSystemRange">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_user_security_domain_range" domainObjectName="UserSecurityDomainRange">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_usability_result" domainObjectName="UsabilityResult">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_usability_result_detail" domainObjectName="UsabilityResultDetail">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_trojan_result" domainObjectName="TrojanResult">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_trojan_result_detail" domainObjectName="TrojanResultDetail">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_tamper_result" domainObjectName="TamperResult">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_tamper_result_detail" domainObjectName="TamperResultDetail">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_illegal_link_result" domainObjectName="IllegalLinkResult">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_illegal_link_result_detail" domainObjectName="IllegalLinkResultDetail">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_keyword_result" domainObjectName="KeywordResult">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_keyword_result_detail" domainObjectName="KeywordResultDetail">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+
+        <table tableName="t_tamper_log" domainObjectName="TamperLog">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_tamper_asset" domainObjectName="TamperAsset">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_static_tamper_log" domainObjectName="StaticTamperLog">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+        <table tableName="t_server_access_log" domainObjectName="ServerAccessLog">
+            <columnRenamingRule searchString="^t_" replaceString="" />
+        </table>
+    </context>
+
+</generatorConfiguration>
